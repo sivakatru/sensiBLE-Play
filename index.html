@@ -22,6 +22,7 @@ limitations under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>:: sensiBLE Play ::</title>
     <link rel = "icon" href = "./icon-16.png" type = "image/x-icon">
+
 		<style>/* Copyright 2014 The Chromium Authors. All rights reserved.
    Use of this source code is governed by a BSD-style license that can be
    found in the LICENSE file. */
@@ -33,6 +34,7 @@ a {
 body {
   background-color: #f7f7f7;
   color: #585858;
+  font-family: "Source Code Pro",'Roboto', sans-serif;
   font-size: 100%;
 }
 
@@ -42,17 +44,13 @@ body.safe-browsing {
 }
 
 button {
-  background: rgb(76, 142, 250);
-  border: 0;
-  border-radius: 2px;
-  box-sizing: border-box;
+  background: rgb(0, 22, 0);
   color: #fff;
   cursor: pointer;
   float: right;
   font-size: .875em;
-  height: 36px;
-  margin: -6px 0 0;
-  padding: 8px 24px;
+  font-family: 'Source Code Pro','Roboto';
+  height: 56px;
   transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -61,12 +59,21 @@ button {
 }
 
 button:active {
-  background: rgb(50, 102, 213);
+  background: rgb(0, 0, 29);
   outline: 0;
 }
 
 button:hover {
+  background: rgb(230, 230, 230);
+  color: #000000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .50);
+}
+
+footer {
+    float: right;
+    margin: 0px 0px 0px 0px;
+    color: #000;
+    text-align: right;
 }
 
 .debugging-content {
@@ -596,18 +603,18 @@ html[subframe] body {
 </style>
   </head>
   <body>
-	<div>
-    <p style="float: left;""><img src="icon-16.png"/></p>
-    <h1>sensiBLE Play</h1>
-	  <p>Let's you play with Arduino Nano BLE Sense</p>
+	<div style="display:flex; flex-direction:row;">
+    <div ><img src="icon-16.png" height="65"/></div>
+    <div style="display:flex; flex-direction:column;font-weight:bold;font-size:20px;padding-left:10px;line-height:2">sensiBLE Play<div style="font-weight:normal;font-size:16px;">Let's you play with Arduino Nano Sense 33 BLE</div></div>
+	  
 	</div>
   <hr>
-    
+    <p>Before you start follow the <a href="https://github.com/googlecreativelab/tf4micro-motion-kit#install-and-run-on-arduino" target="_blank" rel="noopener noreferrer">Instructions</a>
     <p id="statusEl"></p>
     <p id="inferenceEl"></p>
     <p id="imuDataEl"></p>
 
-    <button id="connectBtn">Connect</button>
+    <button id="connectBtn"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/bluetooth-1990772-1679971.png" alt="icon" style="width:10%;margin-right: 5px;vertical-align: middle;">Connect</button>
     <button id="transferBtn" disabled style="display: none;">Test Transfer</button>
 
     <script type="module">
@@ -631,7 +638,7 @@ html[subframe] body {
         connectBtn.innerText = 'connect';
       }
 
-      statusEl.innerText = "Click connect to start playing!";
+      statusEl.innerText = "Once ready, click 'Connect' to start playing!";
 
       connectBtn.addEventListener("click", () => {
         statusEl.innerText = "Connecting...";
@@ -2693,7 +2700,22 @@ html[subframe] body {
 	}
   </script>
 
-	<iframe src="https://f3.silvergames.com/m/doodle-cricket/" id="swf" allowfullscreen frameborder="0" scrolling="no" width="600" height="350"></iframe>
-  
+<img src="https://storage.googleapis.com/gweb-experiments.appspot.com/3271-03_Air_Snare_Screen_Capture.gif" style="width:60%;height=30%;display: block; margin-left: auto;margin-right: auto;width: 50%;"/>
+
+
+	<!--iframe src="https://f3.silvergames.com/m/doodle-cricket/" id="swf" allowfullscreen frameborder="0" scrolling="no" width="600" height="350"></iframe-->
+
+<!--Placed in Main to show white background -->
+<a href="https://experiments.withgoogle.com/collection/tfliteformicrocontrollers" target="_blank" rel="noopener noreferrer">About</a>
+<a href="https://github.com/googlecreativelab/tf4micro-motion-kit/blob/main/FAQ.md" target="_blank" rel="noopener noreferrer">FAQ</a>
+	
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Source+Code+Pro:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<footer id="bottom">
+Acknowledgements: Google creative lab & Arduino Team
+</footer>
 </body>
 </html>
