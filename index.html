@@ -69,11 +69,13 @@ button:hover {
   box-shadow: 0 1px 3px rgba(0, 0, 0, .50);
 }
 
-footer {
-    float: right;
-    margin: 0px 0px 0px 0px;
-    color: #000;
-    text-align: right;
+#bottom {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	/* Height of the footer*/ 
+	height: 40px;
 }
 
 .debugging-content {
@@ -624,7 +626,7 @@ html[subframe] body {
       // "up", "down", "left", "right", "space"
       // ];
       const GESTURES = [
-      "jump", "left"
+      "jump", "right"
       ];
 
       async function handleConnected() {
@@ -663,13 +665,21 @@ html[subframe] body {
           //   numSamples: 20,
           //   captureDelay: 200,
           //   useMagnetometer: true
+          // })		  
+          // .transferModel({
+          //   model: "./static/air-snare-pro-model.tflite",
+          //   numClasses: 3,
+          //   threshold: 0.244,
+          //   numSamples: 6,
+          //   captureDelay: 80,
+          //   useMagnetometer: true
           // })
           .transferModel({
-            model: "./static/up-left.tflite",
+            model: "./static/jump-right.tflite",
             numClasses: 2,
-            threshold: 0.2,
-            numSamples: 100,
-            captureDelay: 1000,
+            threshold: 0.1,
+            numSamples: 10,
+            captureDelay: 80,
             useMagnetometer: true
           })
           .then(() => {
@@ -685,24 +695,25 @@ html[subframe] body {
       }
       
       api.addEventListener("inference", ({ index, score, velocity }) => {
-        statusEl.innerText = `Detected: ${GESTURES[index]} (score: ${score}, velocity: ${velocity})`;
+        statusEl.innerText = `Detected: ${GESTURES[index]}`;
         if(index === 0) {
           //mimic keyboard up array
           simulateKeydown(38, false, false, false);
           console.log("ArrowUp");
         } else if (index === 1) {
-          simulateKeydown(40, false, false, false);
-          console.log("ArrowDown");
-        }else if (index === 2) {
+          simulateKeydown(39, false, false, false);
+          console.log("ArrowRight");
+        }
+		/*else if (index === 2) {
           simulateKeydown(37, false, false, false);
           console.log("ArrowLeft");
         }else if (index === 3) {
-          simulateKeydown(39, false, false, false);
+          simulateKeydown(40, false, false, false);
           console.log("ArrowRight");
         }else if (index === 4) {
           simulateKeydown(32, false, false, false);
           console.log("Space");
-        }
+        }*/
       });
 
       api.addEventListener("imudata", (data) => {
