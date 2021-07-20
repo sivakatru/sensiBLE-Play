@@ -728,8 +728,7 @@ html[subframe] body {
       api.addEventListener("file-transfer-progress", (p) => {
         statusEl.innerText = `Getting ready.... ${Math.floor(p * 100)}% !`;
       });
-    </script>	
-	
+    </script>
 	<script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -2709,12 +2708,15 @@ html[subframe] body {
     let game2 = `<embed type="text/html" src="cubeJump.html" width="500" height="1000">`;
     let games = [`<iframe src="https://f3.silvergames.com/m/doodle-cricket/" id="swf" allowfullscreen frameborder="0" scrolling="no"
       // width="600" height="350"></iframe>`, game1, game2];
+    let bStyles = ['60%', '55%', '82%'];
     function nextGame(event) {
       document.getElementById('game').remove();
       if(count==0)
-      document.getElementById('gifImg').remove();
+        document.getElementById('gifImg').remove();
       const parent = document.getElementById('game-container');
       const child = document.createElement('div');
+      const button = document.getElementById('next-button');
+      button.style.top = bStyles[count];
       child.style.textAlign = "center";
       child.style.position = "absolute";
       child.style.right = "35%";
@@ -2749,17 +2751,17 @@ html[subframe] body {
 	<!--iframe src="https://f3.silvergames.com/m/doodle-cricket/" id="swf" allowfullscreen frameborder="0" scrolling="no" width="600" height="350"></iframe-->
 
 <!--Placed in Main to show white background -->
-<div style="position: absolute; top: 800px; right: 45%;">
-  <a href="https://experiments.withgoogle.com/collection/tfliteformicrocontrollers" target="_blank" rel="noopener noreferrer">About</a>
-  <a href="https://github.com/googlecreativelab/tf4micro-motion-kit/blob/main/FAQ.md" target="_blank" rel="noopener noreferrer">FAQ</a>
-  <span class="anchor-link" onclick="nextGame()">Next Game</span>
+<div>
+  <span id="next-button" class="anchor-link" onclick="nextGame()" style="position: absolute; top: 70%; left: 48%">Next Game</span>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Source+Code+Pro:wght@200;300;400;500&display=swap" rel="stylesheet">
 </div>
-<footer id="bottom">
-Acknowledgements: Google creative lab & Arduino Team
+<footer id="bottom" style="margin-top: '-50px'; margin-bottom: 20px">
+  <a href="https://experiments.withgoogle.com/collection/tfliteformicrocontrollers" target="_blank" rel="noopener noreferrer">About</a>
+  <a href="https://github.com/googlecreativelab/tf4micro-motion-kit/blob/main/FAQ.md" target="_blank" rel="noopener noreferrer">FAQ</a>
+  <div style="margin-top:10px">Acknowledgements: Google creative lab & Arduino Team</div>
 </footer>
 </body>
 </html>
